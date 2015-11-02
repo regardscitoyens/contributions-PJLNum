@@ -14,11 +14,16 @@ cp data/opinion-61_version-190.json data-contributions/opinion-61/version-190.js
 Install the python dependencies (in your choice of sudo or virtualenv):
 
 ```bash
-pip install requests
+pip install requests networkx
 ```
 
-## Run with:
+## Run:
 
 ```bash
+# Scrap all data from the website
+# takes a few hours, unnecessaray since the scraped data is included in the data directory
 ./scrap.py
+
+# Build GEXF networks
+./build_networks.py
 ```
