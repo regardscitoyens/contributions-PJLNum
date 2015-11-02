@@ -59,7 +59,7 @@ extra_regexps = [
   ("picture", re.compile(r'<img title[^>]*? src="(/media/cache/default_profile/[^"]+)"[\s/]*>'), lambda x: buildUrl(x.group(1)))
 ]
 
-re_propals = re.compile(r'<li class="opinion has-chart" data-ok="(\d+)" data-nok="(\d+)" data-mitige="(\d+)" data-pie-id="(\d+)">.*?<a href="(/projects/projet-de-loi-numerique/consultation/consultation/opinions/((([^/]+)/[^/"]+)[^"]*))">\s*([^<]+)\s*</a>.*?<span>(\d+) vote.*?<span>(\d+) argument.*?<span>(\d+) source')
+re_propals = re.compile(r'<li class="opinion has-chart[^"]*" data-ok="(\d+)" data-nok="(\d+)" data-mitige="(\d+)" data-pie-id="(\d+)">.*?<a href="(/projects/projet-de-loi-numerique/consultation/consultation/opinions/((([^/]+)/[^/"]+)[^"]*))">\s*([^<]+)\s*</a>.*?<span>(\d+) vote.*?<span>(\d+) argument.*?<span>(\d+) source')
 re_votes = re.compile(ur'</a> a voté sur <a href="/projects/projet-de-loi-numerique/consultation/consultation/opinions/([^"]+)">([^<]+)</a>.*?<span class="label label-(warning|success|danger)">')
 
 def processUser(userId, all_contribs, users, contributions):
