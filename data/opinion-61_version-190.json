@@ -1,0 +1,84 @@
+{
+  "version": {
+    "isContribuable": false,
+    "votes_total": 8,
+    "id": 190,
+    "author": {
+      "username": "Sarah davies",
+      "displayName": "Sarah davies",
+      "uniqueId": "sarahdavies",
+      "isAdmin": false,
+      "media": null,
+      "vip": false,
+      "_links": {
+        "profile": "https://www.republique-numerique.fr/profile/sarahdavies",
+        "settings": "https://www.republique-numerique.fr/profile/edit-profile"
+      }
+    },
+    "arguments": [{},{},{},{},{}],
+    "sources": [],
+    "parent": {
+      "isContribuable": false,
+      "id": 61,
+      "body": "<p>I. Les deuxi&egrave;me, troisi&egrave;me et quatri&egrave;me alin&eacute;as de l&rsquo;article 7 de la loi n&deg; 78-753 du 17 juillet 1978 sont remplac&eacute;s par les dispositions suivantes&nbsp;:</p>\r\n\r\n<p>&laquo;&nbsp;Les administrations mentionn&eacute;es &agrave; l&rsquo;article 1er, &agrave; l&#39;exception des personnes morales dont le nombre d&#39;agents ou de salari&eacute;s est inf&eacute;rieur &agrave; un seuil fix&eacute; par d&eacute;cret, diffusent publiquement en ligne dans un standard ouvert ais&eacute;ment r&eacute;utilisable les documents suivants, sous r&eacute;serve des dispositions de l&rsquo;article 6, lorsqu&rsquo;ils sont disponibles sous forme &eacute;lectronique&nbsp;:<br />\r\n1&deg;&nbsp;les documents qu&rsquo;elles communiquent en application des proc&eacute;dures pr&eacute;vues par le pr&eacute;sent titre, ainsi que leurs mises &agrave; jour&nbsp;;<br />\r\n2&deg; l&rsquo;ensemble des documents qui figurent dans le r&eacute;pertoire mentionn&eacute; &agrave; l&rsquo;article 17&nbsp;;<br />\r\n3&deg; les bases de donn&eacute;es qu&rsquo;elles produisent ou qu&rsquo;elles re&ccedil;oivent, ainsi que les donn&eacute;es dont la publication pr&eacute;sente un int&eacute;r&ecirc;t &eacute;conomique, social ou environnemental.</p>\r\n\r\n<p>&laquo;&nbsp;Lorsque ces documents comportent des donn&eacute;es &agrave; caract&egrave;re personnel, ils ne peuvent &ecirc;tre diffus&eacute;s qu&rsquo;apr&egrave;s anonymisation de ces donn&eacute;es, sauf si une disposition l&eacute;gislative ou r&eacute;glementaire autorise leur diffusion sans anonymisation pr&eacute;alable ou si la personne int&eacute;ress&eacute;e y a consenti.</p>\r\n\r\n<p>&laquo;&nbsp;Les administrations mentionn&eacute;es &agrave; l&rsquo;article 1er ne sont pas tenues de publier les archives publiques issues des op&eacute;rations de s&eacute;lection pr&eacute;vues aux articles L. 212-2 et L.&nbsp;212-3 du code du patrimoine.</p>\r\n\r\n<p>&laquo;&nbsp;Sans pr&eacute;judice des dispositions de l&rsquo;article L. 1112-23 du code g&eacute;n&eacute;ral des collectivit&eacute;s territoriales et de l&rsquo;article L. 125-12 du code des communes de Nouvelle-Cal&eacute;donie, les dispositions du deuxi&egrave;me &agrave; sixi&egrave;me alin&eacute;a du pr&eacute;sent article ne s&rsquo;appliquent pas aux collectivit&eacute;s territoriales, ni aux EPCI &agrave; fiscalit&eacute; propre auxquels elles appartiennent.</p>\r\n\r\n<p>&laquo;&nbsp;Un d&eacute;cret en Conseil d&rsquo;Etat pris apr&egrave;s avis de la commission mentionn&eacute;e au chapitre III d&eacute;finit les modalit&eacute;s d&rsquo;application du pr&eacute;sent article.&nbsp;&raquo;</p>\r\n\r\n<p>II. A l&rsquo;article 9 de la m&ecirc;me loi, apr&egrave;s les mots&nbsp;: &laquo;&nbsp;sont communiqu&eacute;s&nbsp;&raquo;, sont ins&eacute;r&eacute;s les mots&nbsp;: &laquo;&nbsp;ou diffus&eacute;s&nbsp;&raquo;.</p>\r\n\r\n<p>III. Sans pr&eacute;judice des dispositions de l&rsquo;article L. 1112-23 du code g&eacute;n&eacute;ral des collectivit&eacute;s territoriales et de l&rsquo;article L. 125-12 du code des communes de Nouvelle-Cal&eacute;donie, les dispositions du I du pr&eacute;sent article entrent en vigueur &agrave; une date fix&eacute;e par d&eacute;cret et au plus tard deux ans apr&egrave;s la publication de la pr&eacute;sente loi.</p>\r\n\r\n<p>Dans un d&eacute;lai de six mois &agrave; compter de la publication de la pr&eacute;sente loi, les administrations mentionn&eacute;es au&nbsp;I diffusent publiquement les documents qu&rsquo;elles communiquent en application des proc&eacute;dures pr&eacute;vues par le pr&eacute;sent titre.</p>\r\n\r\n<p>Dans un d&eacute;lai d&rsquo;un an &agrave; compter de la publication de la pr&eacute;sente loi, les administrations mentionn&eacute;es au&nbsp;I diffusent publiquement l&rsquo;ensemble des documents qui figurent dans le r&eacute;pertoire mentionn&eacute; &agrave; l&rsquo;article 17 de la loi du 7 juillet 1978.</p>",
+      "type": {
+        "id": 86,
+        "title": "Section 1",
+        "subtitle": "Ouverture des données publiques",
+        "voteWidgetType": 2,
+        "votesHelpText": "Pensez-vous que cette proposition permet d'atteindre les objectifs présentés dans l’explication de l’article ?",
+        "commentSystem": 2,
+        "color": "blue",
+        "versionable": true,
+        "sourceable": true,
+        "votesThreshold": null,
+        "votesThresholdHelpText": null
+      },
+      "modals": [
+        {
+          "key": "article 7 de la loi n° 78-753 du 17 juillet 1978",
+          "before": "<p>Font l'objet d'une publication les directives, les instructions, les circulaires, ainsi que les notes et réponses ministérielles qui comportent une interprétation du droit positif ou une description des procédures administratives.</p><p>Les administrations mentionnées à l'article 1er peuvent en outre rendre publics les autres documents administratifs qu'elles produisent ou reçoivent.</p><p>Toutefois, sauf dispositions législatives contraires, les documents administratifs qui comportent des mentions entrant dans le champ d'application de l'article 6 ou, sans préjudice de l'article 13, des données à caractère personnel ne peuvent être rendus publics qu'après avoir fait l'objet d'un traitement afin d'occulter ces mentions ou de rendre impossible l'identification des personnes qui y sont nommées.</p><p>Un décret en Conseil d'Etat pris après avis de la commission mentionnée au chapitre III précise les modalités d'application du premier alinéa du présent article.</p>",
+          "after": "<p>Font l'objet d'une publication les directives, les instructions, les circulaires, ainsi que les notes et réponses ministérielles qui comportent une interprétation du droit positif ou une description des procédures administratives.</p>Les administrations mentionnées à l’article 1er, à l'exception des personnes morales dont le nombre d'agents ou de salariés est inférieur à un seuil fixé par décret, diffusent publiquement en ligne dans un standard ouvert aisément réutilisable les documents suivants, sous réserve des dispositions de l’article 6, lorsqu’ils sont disponibles sous forme électronique :<br>1° les documents qu’elles communiquent en application des procédures prévues par le présent titre, ainsi que leurs mises à jour ;<br>2° l’ensemble des documents qui figurent dans le répertoire mentionné à l’article 17 ;<br>3° les bases de données qu’elles produisent ou qu’elles reçoivent, ainsi que les données dont la publication présente un intérêt économique, social ou environnemental.</p><p>Lorsque ces documents comportent des données à caractère personnel, ils ne peuvent être diffusés qu’après anonymisation de ces données, sauf si une disposition législative ou réglementaire autorise leur diffusion sans anonymisation préalable ou si la personne intéressée y a consenti.</p><p>Les administrations mentionnées à l’article 1er ne sont pas tenues de publier les archives publiques issues des opérations de sélection prévues aux articles L. 212-2 et L. 212-3 du code du patrimoine.</p><p>Sans préjudice des dispositions de l’article L. 1112-23 du code général des collectivités territoriales et de l’article L. 125-12 du code des communes de Nouvelle-Calédonie, les dispositions du deuxième à sixième alinéa du présent article ne s’appliquent pas aux collectivités territoriales, ni aux EPCI à fiscalité propre auxquels elles appartiennent.<br>Un décret en Conseil d'Etat pris après avis de la commission mentionnée au chapitre III définit les modalités d'application du présent article.</p>",
+          "title": "Article 7 de la loi n°78-753 du 17 juillet 1978"
+        },
+        {
+          "key": "article 9",
+          "before": "<p>Les documents administratifs sont communiqués sous réserve des droits de propriété littéraire et artistique.</p>",
+          "after": "<p>Les documents administratifs sont communiqués ou diffusés sous réserve des droits de propriété littéraire et artistique.</p>",
+          "title": "Article 9 de la loi n°78-753 du 17 juillet 1978"
+        }
+      ],
+      "appendices": [
+        {
+          "body": "<p><strong>Objectif :</strong> &eacute;largir massivement les obligations de diffusion spontan&eacute;e de documents et donn&eacute;es des organismes publics.</p>\r\n\r\n<p><strong>Explication :</strong> aujourd&rsquo;hui, la loi du 17 juillet 1978 (dite &laquo; loi CADA &raquo;) pr&eacute;voit qu&rsquo;un grand nombre de documents des organismes publics sont communicables : toute personne peut demander &agrave; l&rsquo;administration de les communiquer, mais ils ne sont pas publi&eacute;s. D&eacute;sormais, les organismes publics mettront spontan&eacute;ment en ligne ces documents (sans que l&rsquo;usager n&rsquo;ait besoin d&rsquo;en faire la demande).<br />\r\nMais cette mesure ne s&rsquo;appliquera qu&rsquo;aux documents les plus pertinents pour l&rsquo;open data (notamment les bases de donn&eacute;es), sera restreinte au flux des nouveaux documents en format &eacute;lectronique, et ne concernera ni les petits organismes ni les collectivit&eacute;s locales (pas de modification de l&rsquo;article 106 de la loi du 7 ao&ucirc;t 2015 portant nouvelle organisation territoriale de la R&eacute;publique). Une mise en &oelig;uvre diff&eacute;r&eacute;e est &eacute;galement pr&eacute;vue au III de cet article : l&rsquo;ensemble des obligations nouvelles ne s&rsquo;appliquera qu&rsquo;au bout de 2 ans.</p>\r\n\r\n<p><strong>Exemple :</strong> la liste des logements sociaux des organismes HLM est aujourd&rsquo;hui communicable sur demande mais non publi&eacute;e ; il sera pr&eacute;vu d&eacute;sormais que de telles bases de donn&eacute;es des organismes publics doivent &ecirc;tre mises en ligne.</p>",
+          "type": {
+            "title": "Explication de l'article"
+          }
+        }
+      ],
+      "title": "Article 1 - Open data par défaut (obligation de diffuser en ligne les principaux documents et données des organismes publics)",
+      "_links": {
+        "show": "https://www.republique-numerique.fr/consultations/projet-de-loi-numerique/consultation/consultation/opinions/section-1-ouverture-des-donnees-publiques-1/article-1-elargissement-du-champ-de-diffusion-par-l-administration",
+        "edit": "https://www.republique-numerique.fr/consultations/projet-de-loi-numerique/consultation/consultation/opinions/section-1-ouverture-des-donnees-publiques-1/article-1-elargissement-du-champ-de-diffusion-par-l-administration/edit",
+        "report": "https://www.republique-numerique.fr/consultations/projet-de-loi-numerique/consultation/consultation/opinions/section-1-ouverture-des-donnees-publiques-1/article-1-elargissement-du-champ-de-diffusion-par-l-administration/report",
+        "type": "https://www.republique-numerique.fr/consultations/projet-de-loi-numerique/consultation/consultation/opinions/section-1-ouverture-des-donnees-publiques-1"
+      },
+      "user_vote": null,
+      "has_user_reported": false
+    },
+    "sources_count": 0,
+    "arguments_count": 5,
+    "votes": [],
+    "title": "Manque d'amour envers les \u00eatres ",
+    "slug": "manque-d-amour-envers-les-etres",
+    "votes_nok": 7,
+    "votes_ok": 1,
+    "votes_mitige": 0,
+    "_links": {
+      "show": "http://www.republique-numerique.fr/projects/projet-de-loi-numerique/consultation/consultation/opinions/section-1-ouverture-des-donnees-publiques-1/article-1-elargissement-du-champ-de-diffusion-par-l-administration/versions/manque-d-amour-envers-les-etres",
+      "report": "http://www.republique-numerique.fr/projects/projet-de-loi-numerique/consultation/consultation/opinions/section-1-ouverture-des-donnees-publiques-1/article-1-elargissement-du-champ-de-diffusion-par-l-administration/versions/manque-d-amour-envers-les-etres/report"
+    },
+    "user_vote": null
+  },
+  "opinionTerm": 1
+}
