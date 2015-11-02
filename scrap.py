@@ -155,6 +155,16 @@ def buildContribsFromEtalab(repodir):
                 all_contribs[hashcontrib] = cid
     return all_contribs
 
+def format_for_csv(val):
+    if not val:
+        return ""
+    if type(val) == int:
+        return str(val)
+    elif "," in val:
+        val = '"%s"' % val.replace('"', '""')
+    return val.encode('utf-8')
+
+
 if __name__ == "__main__":
     if not os.path.exists(os.path.join("data-contributions", "")):
         print >> sys.stderr, "ERROR: missing contributions data from Etalab's repository"
@@ -176,6 +186,8 @@ if __name__ == "__main__":
         json.dump(users, f, indent=2)
     with open(os.path.join("data", "contributions.json"), 'w') as f:
         json.dump(contributions, f, indent=2)
-
-# TODO:
-# - build networks
+    with open(os.path.join("data", "users.csv"), 'w') as f:
+        headers = "id,name,type,date_inscription,geoloc,website,twitter,facebook,contributions_total,propositions_total,amendements_total,votes_total,votes_pro_total,votes_against_total,votes_unsure_total,description,picture,url"
+        print >> f, headers
+        for u in users.values():
+            print >> f, ",".join([format_for_csv(u[h]) for h in headers.split(",")])
