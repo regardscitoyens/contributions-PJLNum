@@ -26,4 +26,9 @@ pip install requests networkx
 
 # Build GEXF networks
 ./build_networks.py
+# Build lighter networks by filtering low linkage
+for i in `seq 1 5`; do
+  grep -v 'weight="[0-'$i']"' data/contributions.gexf > data/contributions-w$(($i+1))+.gexf
+done
+
 ```
