@@ -1,0 +1,16 @@
+h1, #buttons, p{
+  text-align: center
+}
+#iframe{
+  width: 100%;
+  border: 1px #EEE;
+  margin: auto;
+  text-align: center;
+}
+#loader{
+  text-align: center;
+}
+#graph{
+  clear: both;
+  width: 100%;
+}
