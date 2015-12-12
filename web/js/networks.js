@@ -2,9 +2,9 @@
 
   ns.sigma = undefined;
 
-  ns.downloadGraph = function(){
+  ns.downloadGraph = function(filename){
     console.log("Downloading data...");
-    $.getJSON('data/networks/users_supporters.json').then(function(data){
+    $.getJSON('data/networks/'+filename).then(function(data){
       console.log("Building network...");
       if (ns.sigma) ns.sigma.kill();
       ns.sigma = new sigma({
@@ -60,10 +60,5 @@
   };
 
   $(window).resize(ns.setResponsive);
-
-  $(document).ready(function(){
-    ns.setResponsive();
-    ns.downloadGraph();
-  });
 
 })(window.networksPJLNum = window.networksPJLNum || {});
