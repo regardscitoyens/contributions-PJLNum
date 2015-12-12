@@ -9,11 +9,15 @@
       ns.sigma = new sigma({
         container: 'graph',
         settings: {
-          labelThreshold: 4,
+          labelThreshold: 2,
           singleHover: true,
-          minNodeSize: 0.1,
+          minNodeSize: 1,
+          maxNodeSize: 12,
           edgeColor: "default",
-          borderSize: 1
+          borderSize: 1,
+          defaultEdgeColor: "#F44",
+          maxEdgeSize: 0.1,
+          drawEdges: true
         }
       }).configForceAtlas2({
         adjustSizes: true,
