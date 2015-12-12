@@ -26,14 +26,28 @@ def build_contribs_network(users, contributions, filename):
         votedContribs = []
         for c in u['votes_pro']:
             contrib = contributions[c]
-            add_node(G, c, label=contributions[c]["name"], total_votes=contributions[c]["votes_total"], type=contributions[c]["type"], author=contributions[c]["author"], url=contributions[c]['url'], section = contributions[c]['section'], votes_pro=contributions[c]['votes_pro'], votes_against=contributions[c]['votes_against'], votes_unsure=contributions[c]['votes_unsure'])
+            aut_type = users[contributions[c]["author"]]["type"]
+            if not aut_type:
+                aut_type = u"Indéfini"
+            add_node(G, c, label=contributions[c]["name"], total_votes=contributions[c]["votes_total"], type=contributions[c]["type"], author=contributions[c]["author"], url=contributions[c]['url'], section=contributions[c]['section'], votes_pro=contributions[c]['votes_pro'], votes_against=contributions[c]['votes_against'], votes_unsure=contributions[c]['votes_unsure'], type_source=aut_type)
             for c2 in votedContribs:
                 add_edge(G, c, c2)
             votedContribs.append(c)
     nx.write_gexf(G, filename)
 
 def build_users_network(users, contributions, filename):
-    pass
+    G = nx.DiGraph()
+    for u in users.values():
+        if not u['type']:
+            u['type'] = u"Indéfini"
+        add_node(G, u["id"], label=u["name"], total_contributions=u["contributions_total"], total_votes=u["votes_total"], type=u["type"], url=u['url'], votes_pro=u['votes_pro_total'], votes_against=u['votes_against_total'], votes_unsure=u['votes_unsure_total'])
+    for u in users.values():
+        for v in u['votes_pro']:
+            add_edge(G, u["id"], contributions[v]["author"])
+    for u in users:
+        if not G.degree(u):
+            G.remove_node(u)
+    nx.write_gexf(G, filename)
 
 def build_users_contribs_network(users, contributions, filename):
     pass
@@ -45,3 +59,5 @@ if __name__ == "__main__":
     with open(os.path.join("data", "contributions.json")) as f:
         contributions = json.load(f)
     build_contribs_network(users, contributions, os.path.join("data", "contributions.gexf"))
+    build_users_network(users, contributions, os.path.join("data", "users.gexf"))
+
