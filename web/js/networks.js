@@ -15,8 +15,8 @@
           maxNodeSize: 12,
           edgeColor: "default",
           borderSize: 1,
-          defaultEdgeColor: "#F44",
-          maxEdgeSize: 0.1,
+          defaultEdgeColor: "#EEE",
+          maxEdgeSize: 0.05,
           drawEdges: true
         }
       }).configForceAtlas2({
