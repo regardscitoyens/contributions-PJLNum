@@ -24,8 +24,9 @@ def add_edge(graph, node1, node2, weight=1):
 def build_contribs_network(users, contributions, filename):
     G = nx.Graph()
     for u in users.values():
+      for typevot in ["pro", "against", "unsure"]:
         votedContribs = []
-        for c in u['votes_pro']:
+        for c in u['votes_%s' % typevot]:
             contrib = contributions[c]
             aut_type = users[contributions[c]["author"]]["type"]
             if not aut_type:
@@ -58,7 +59,7 @@ def load_full_data(filepointer):
     users = {}
     contributions = {}
     for row in csv.DictReader(filepointer):
-        uid = int(row["Id de l'auteur"])
+        uid = int(row["Id anonymise de l'Auteur int"])
         if uid not in users:
             users[uid] = {
                 "id": uid,
@@ -108,7 +109,7 @@ def load_full_data(filepointer):
         if not user["type"]:
             user["type"] = "Citoyen"
         if user["type"] == "Citoyen" and not user["contributions_total"]:
-            user["name"] = "Citoyen %s" % uid
+            user["name"] = ""
     return users, contributions
 
 if __name__ == "__main__":
@@ -121,7 +122,7 @@ if __name__ == "__main__":
         build_contribs_network(users, contributions, os.path.join("data", "contributions.gexf"))
         build_users_network(users, contributions, os.path.join("data", "users.gexf"))
     else:
-        with open(os.path.join("data", "2015-11-30_projet-de-loi-numerique_consultation.csv")) as f:
+        with open(os.path.join("data", "2015-11-30_projet-de-loi-numerique_consultation.anon.csv")) as f:
             users, contributions = load_full_data(f)
         build_contribs_network(users, contributions, os.path.join("data", "contributions.gexf"))
         build_users_network(users, contributions, os.path.join("data", "users.gexf"))
