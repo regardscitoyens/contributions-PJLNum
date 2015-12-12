@@ -105,6 +105,8 @@ def load_full_data(filepointer):
             users[uid]["votes_total"] += 1
             users[uid]["votes_%s_total" % typevote] += 1
             users[uid]["votes_%s" % typevote].append(idcontr)
+            contributions[idcontr]["votes_total"] += 1
+            contributions[idcontr]["votes_%s" % typevote] += 1
     missing = 0
     for uid, user in users.items():
         if not user["type"]:
