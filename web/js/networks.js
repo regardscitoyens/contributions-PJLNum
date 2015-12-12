@@ -6,7 +6,7 @@
     var contrGraph = (filename.indexOf("users") === -1);
     console.log("Downloading data...");
   setTimeout(function(){
-    $.getJSON('data/networks/'+filename).then(function(data){
+    $.getJSON('data/'+filename).then(function(data){
       console.log("Building network...");
       if (ns.sigma) ns.sigma.kill();
       ns.sigma = new sigma({
