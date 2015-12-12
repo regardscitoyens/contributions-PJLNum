@@ -105,11 +105,15 @@ def load_full_data(filepointer):
             users[uid]["votes_total"] += 1
             users[uid]["votes_%s_total" % typevote] += 1
             users[uid]["votes_%s" % typevote].append(idcontr)
+    missing = 0
     for uid, user in users.items():
         if not user["type"]:
             user["type"] = "Citoyen"
         if user["type"] == "Citoyen" and not user["contributions_total"]:
             user["name"] = ""
+        if not user["votes_pro_total"] and not user["contributions_total"]:
+            missing += 1
+    print >> sys.stderr, "WARNING: %s/%s citizens with no contribs nor votes will miss in users.gexf" % (missing, len(users.keys()))
     return users, contributions
 
 if __name__ == "__main__":
