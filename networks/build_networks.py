@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os, json
+import os, sys, re
+import csv, json
 import networkx as nx
 
 def add_node(graph, node, **args):
@@ -52,12 +53,76 @@ def build_users_network(users, contributions, filename):
 def build_users_contribs_network(users, contributions, filename):
     pass
 
+re_clean_link = re.compile(r'^(.).*"(\d+)"')
+def load_full_data(filepointer):
+    users = {}
+    contributions = {}
+    for row in csv.DictReader(filepointer):
+        uid = int(row["Id de l'auteur"])
+        if uid not in users:
+            users[uid] = {
+                "id": uid,
+                "name": row["Auteur"].decode('utf-8'),
+                "type": row["Type de profil"].decode('utf-8'),
+                "url": "",
+                "contributions_total": 0,
+                "propositions_total": 0,
+                "modifications_total": 0,
+                "votes_total": 0,
+                "votes_pro_total": 0,
+                "votes_against_total": 0,
+                "votes_unsure_total": 0,
+                "votes_pro": [],
+                "votes_against": [],
+                "votes_unsure": []
+            }
+        if row["Type de contenu"] in ["Proposition", "Modification"]:
+            typecontr = row["Type de contenu"].lower().decode('utf-8')
+            contrid = "%s%s" % (typecontr[0], int(row["Identifiant"]))
+            users[uid]["contributions_total"] += 1
+            users[uid]["%ss_total" % typecontr] += 1
+            contributions[contrid] = {
+                "id": contrid,
+                "type": typecontr,
+                "name": row["Titre"].decode('utf-8'),
+                "author": uid,
+                "authorName": row["Auteur"].decode('utf-8'),
+                "votes_total": 0,
+                "votes_pro": 0,
+                "votes_against": 0,
+                "votes_unsure": 0,
+                "url": "",
+                "parent": "",
+                "section": ""
+            }
+        elif row["Type de contenu"] == "Vote":
+            idcontr = re_clean_link.sub(r"\1\2", row["Lié à :"]).lower()
+            # keep only votes on propositions & modifications
+            if not idcontr[0] in ["p", "m"]:
+                continue
+            typevote = row["Catégorie"].lower().replace("pour", "pro").replace("contre", "against").replace("mitigé", "unsure")
+            users[uid]["votes_total"] += 1
+            users[uid]["votes_%s_total" % typevote] += 1
+            users[uid]["votes_%s" % typevote].append(idcontr)
+    for uid, user in users.items():
+        if not user["type"]:
+            user["type"] = "Citoyen"
+        if user["type"] == "Citoyen" and not user["contributions_total"]:
+            user["name"] = "Citoyen %s" % uid
+    return users, contributions
 
 if __name__ == "__main__":
-    with open(os.path.join("data", "users.json")) as f:
-        users = json.load(f)
-    with open(os.path.join("data", "contributions.json")) as f:
-        contributions = json.load(f)
-    build_contribs_network(users, contributions, os.path.join("data", "contributions.gexf"))
-    build_users_network(users, contributions, os.path.join("data", "users.gexf"))
+    # Run code for old data on python build_networks.py 1
+    if len(sys.argv) > 1:
+        with open(os.path.join("data", "users.json")) as f:
+            users = json.load(f)
+        with open(os.path.join("data", "contributions.json")) as f:
+            contributions = json.load(f)
+        build_contribs_network(users, contributions, os.path.join("data", "contributions.gexf"))
+        build_users_network(users, contributions, os.path.join("data", "users.gexf"))
+    else:
+        with open(os.path.join("data", "2015-11-30_projet-de-loi-numerique_consultation.csv")) as f:
+            users, contributions = load_full_data(f)
+        build_contribs_network(users, contributions, os.path.join("data", "contributions.gexf"))
+        build_users_network(users, contributions, os.path.join("data", "users.gexf"))
 
