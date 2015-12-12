@@ -3,8 +3,9 @@
   ns.sigma = undefined;
 
   ns.downloadGraph = function(){
-    $.get('data/networks/users_supporters.json').then(function(data){
-      console.log(data)
+    console.log("Downloading data...");
+    $.getJSON('data/networks/users_supporters.json').then(function(data){
+      console.log("Building network...");
       if (ns.sigma) ns.sigma.kill();
       ns.sigma = new sigma({
         container: 'graph',
@@ -48,6 +49,7 @@
           "weight": e.attributes.Weight
         });
       });
+      console.log("Displaying graph...");
       ns.sigma.refresh();
     });
   };
