@@ -3,6 +3,7 @@
   ns.sigma = undefined;
 
   ns.downloadGraph = function(filename){
+    var contrGraph = (filename.indexOf("users") === -1);
     console.log("Downloading data...");
     $.getJSON('data/networks/'+filename).then(function(data){
       console.log("Building network...");
@@ -10,28 +11,20 @@
       ns.sigma = new sigma({
         container: 'graph',
         settings: {
-          labelThreshold: 2,
+          labelThreshold: (contrGraph ? 5 : 5),
           singleHover: true,
-          minNodeSize: 1,
-          maxNodeSize: 12,
+          minNodeSize: (contrGraph ? 4 : 1),
+          maxNodeSize: (contrGraph ? 8 : 12),
           edgeColor: "default",
           borderSize: 1,
           defaultEdgeColor: "#EEE",
-          maxEdgeSize: 0.05,
-          drawEdges: true
+          maxEdgeSize: 0.05
         }
-      }).configForceAtlas2({
-        adjustSizes: true,
-        scalingRatio: 10,
-        strongGravityMode: true,
-        gravity: 0.1,
-        slowDown: 15,
-
       });
       data["nodes"].forEach(function(n){
         ns.sigma.graph.addNode({
           id: n.id,
-          label: n.label,
+          label: (contrGraph ? n.attributes.authorName : n.label),
           type: n.attributes.type,
           votes: n.attributes.total_votes,
           contributions: n.attributes.total_contributions,
