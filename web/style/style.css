@@ -1,9 +1,19 @@
 body{
   text-align: center;
 }
+#head{
+  background-color: #EEE;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 iframe{
   width: 100%;
-  border: 1px #EEE;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border: none;
   margin: auto;
   text-align: center;
 }

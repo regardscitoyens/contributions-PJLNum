@@ -48,7 +48,7 @@
           maxNodeSize: (contrGraph ? 8 : 12),
           edgeColor: "default",
           borderSize: 1,
-          defaultEdgeColor: "#EEE",
+          defaultEdgeColor: "#F8F8F8",
           maxEdgeSize: 0.05
         }
       });
@@ -123,7 +123,7 @@
       n.color = n.color0 || n.color;
     });
     ns.sigma.graph.edges().forEach(function(e) {
-      e.color = '#EEE';
+      e.color = '#F8F8F8';
       e.hidden = false;
     });
     ns.sigma.refresh();
