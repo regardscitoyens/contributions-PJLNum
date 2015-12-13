@@ -33,8 +33,9 @@
     ns.legend.refresh();
   }
 
+  ns.contrGraph = false;
   ns.loadGraph = function(filename){
-    var contrGraph = (filename.indexOf("users") === -1);
+    ns.contrGraph = (filename.indexOf("users") === -1);
     console.log("Downloading data...");
     $.getJSON('data/'+filename).then(function(data){
       console.log("Building network...");
@@ -42,10 +43,11 @@
       ns.sigma = new sigma({
         container: 'graph',
         settings: {
-          labelThreshold: (contrGraph ? 6 : 5),
+          labelThreshold: (ns.contrGraph ? 6 : 4),
+          enableHovering: ns.contrGraph,
           singleHover: true,
-          minNodeSize: (contrGraph ? 2 : 1),
-          maxNodeSize: (contrGraph ? 8 : 12),
+          minNodeSize: (ns.contrGraph ? 3 : 1),
+          maxNodeSize: (ns.contrGraph ? 8 : 10),
           edgeColor: "default",
           borderSize: 1,
           defaultEdgeColor: "#F8F8F8",
@@ -55,9 +57,13 @@
       data["nodes"].forEach(function(n){
         ns.sigma.graph.addNode({
           id: n.id,
-          label: (contrGraph ? n.attributes.authorName : n.label),
+          label: (ns.contrGraph ? n.attributes.authorName : n.label),
+          popup: (ns.contrGraph ? n.label : (n.label || "Citoyen " + n.id)),
           type: n.attributes.type,
           votes: n.attributes.total_votes,
+          pro: n.attributes.votes_pro,
+          unsure: n.attributes.votes_unsure,
+          against: n.attributes.votes_against,
           contributions: n.attributes.total_contributions,
           x: n.x*10,
           y: -n.y*10,
@@ -69,12 +75,12 @@
         ns.sigma.graph.addEdge({
           "id": e.id,
           "source": e.source,
-          "target": e.target,
-          "weight": e.attributes.Weight
+          "target": e.target
         });
       });
       console.log("Displaying graph...");
       ns.sigma.bind('clickNode', ns.clickNode).bind('clickStage', ns.unclickNode);
+      ns.sigma.bind('overNode', ns.showNodeInfo).bind('outNode', ns.hideNodeInfo);
       $('#zoom').click(ns.zoom);
       $('#unzoom').click(ns.unzoom);
       $('#recenter').click(ns.recenter);
@@ -131,6 +137,53 @@
       e.hidden = false;
     });
     ns.sigma.refresh();
+  }
+
+  ns.histoVote = function(type, node){
+    var percent = Math.round(1000*node[type]/node.votes)/10 - 0.05,
+        str = node[type] + ' ' + type.replace(/pro/, 'pour').replace(/unsure/, 'mitigé').replace('against', 'contre'),
+        text = (percent > 20 ? str : (percent > 5 ? node[type] : ''));
+    return '<div class="' + type + '" style="width: ' + percent + '%">' + text + '</div>';
+  };
+
+  ns.popUp = false;
+  ns.showNodeInfo = function(event) {
+    var node = event.data.node;
+    ns.popUp && ns.popUp.remove();
+    console.log(node);
+    ns.popUp = $('<div>').html(
+      '<p>' + node.popup + '</p>' +
+      (node.votes > 0 ? '<small>' + node.votes + " vote" + (node.votes > 1 ? 's' : '') + '</small><br/>' : '') +
+      (node.contributions > 0 ? '<small>' + node.contributions + " contribution" + (node.contributions > 1 ? 's' : '') + '</small><br/>' : '') +
+      (ns.contrGraph ?
+       '<div class="votes">' +
+          ns.histoVote('pro', node) +
+          ns.histoVote('unsure', node) +
+          ns.histoVote('against', node) +
+        '</div>'
+        : '')
+    )
+    .attr('id', 'node-info')
+    .css({
+      'display': 'inline-block',
+      'max-width': 350,
+      'min-height': 30,
+      'border-radius': 3,
+      'padding': 5,
+      'margin': '0 0 0 20px',
+      'text-align': 'center',
+      'background': '#fff',
+      'color': '#000',
+      'box-shadow': '0 0 4px #666',
+      'position': 'absolute',
+      'left': (node['cam0:x'] || node['renderer1:x']) - 175,
+      'top':  (node['cam0:y'] || node['renderer1:y']) + 15
+    });
+    $('#graph').append(ns.popUp);
+  }
+  ns.hideNodeInfo = function(event) {
+    ns.popUp && ns.popUp.remove();
+    ns.popUp = false;
   }
 
   ns.zoom = function() {

@@ -39,6 +39,28 @@ iframe{
 .sigma-tools button{
   padding: 2px 5px;
 }
+.votes{
+  height: 18px;
+  width: 300px;
+  margin: 15px;
+}
+.votes div{
+  height: 100%;
+  float:left;
+  color: white;
+  font-size: 0.8em;
+  font-weight: bold;
+  padding-top: 1px;
+}
+.votes .pro{
+  background-color: #16D244;
+}
+.votes .unsure{
+  background-color: #FFE543;
+}
+.votes .against{
+  background-color: #D22826;
+}
 #legend{
   text-align: left;
   position: absolute;
