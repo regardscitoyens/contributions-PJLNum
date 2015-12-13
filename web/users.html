@@ -4,16 +4,26 @@
     <meta charset="utf-8">
     <title>Communautés d'utilisateurs de la consultation pour une République Numérique</title>
     <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/bootstrap.min.css" />
   </head>
   <body>
     <div id="loader">
       <img src="style/loader.gif"/>
     </div>
-    <div id="graph" class="users"></div>
+    <div id="sigma-parent">
+      <div id="graph" class="users"></div>
+      <div class="sigma-tools">
+        <div class="btn-group-vertical">
+          <button type="button" id="recenter" class="btn btn-link btn-xs"><span class="glyphicon glyphicon-record"></span></button>
+          <button type="button" id="zoom" class="btn btn-link btn-xs"><span class="glyphicon glyphicon-plus"></span></button>
+          <button type="button" id="unzoom" class="btn btn-link btn-xs"><span class="glyphicon glyphicon-minus"></span></button>
+        </div>
+      </div>
+    </div>
     <div id="legend"></div>
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="js/sigma.min.js"></script>
-    <script type="text/javascript" src="js/sigma.layout.forceAtlas2.min.js"></script>
+    <script type="text/javascript" src="js/sigma.plugins.animate.min.js"></script>
     <script type="text/javascript" src="js/networks.js"></script>
   </body>
 </html>

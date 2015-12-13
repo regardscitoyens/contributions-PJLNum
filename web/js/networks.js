@@ -75,9 +75,13 @@
       });
       console.log("Displaying graph...");
       ns.sigma.bind('clickNode', ns.clickNode).bind('clickStage', ns.unclickNode);
+      $('#zoom').click(ns.zoom);
+      $('#unzoom').click(ns.unzoom);
+      $('#recenter').click(ns.recenter);
       ns.sigma.refresh();
       ns.drawLegend();
       $("#loader").hide();
+      $('.sigma-tools').show();
     });
   };
 
@@ -128,6 +132,28 @@
     });
     ns.sigma.refresh();
   }
+
+  ns.zoom = function() {
+    sigma.misc.animation.camera(
+      ns.sigma.camera,
+      {ratio: ns.sigma.camera.ratio / 1.25 },
+      {duration: 50 }
+    );
+  };
+  ns.unzoom = function() {
+    sigma.misc.animation.camera(
+      ns.sigma.camera,
+      {ratio: ns.sigma.camera.ratio * 1.25 },
+      {duration: 50 }
+    );
+  };
+  ns.recenter = function() {
+    sigma.misc.animation.camera(
+      ns.sigma.camera,
+      {x: 0, y: 0, ratio: 1},
+      {duration: 150, easing: 'cubicInOut'}
+    );
+  };
 
   ns.setResponsive = function(){
     $('#graph').width($(window).width() - 50)
