@@ -13,7 +13,7 @@ with open(sys.argv[1], 'r') as csvfileread:
     for row in csvreader:
         if (row[3] == ""):
             row[3] = "Citoyen"
-        if (row[7] == "Proposition") or (row[7] == "Amendement") or (row[3] != "Citoyen"):
+        if (row[7] == "Proposition") or (row[7] == "Modification") or (row[3] != "Citoyen"):
             has_to_be_public[row[2]] = True
 
 with open(sys.argv[1], 'r') as csvfileread:
