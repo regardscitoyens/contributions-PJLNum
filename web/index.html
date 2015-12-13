@@ -3,19 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>Communautés d'utilisateurs de la consultation pour une République Numérique</title>
+    <link rel="shortcut icon" href="style/favicon.png"/>
     <link rel="stylesheet" href="style/style.css" />
   </head>
   <body>
     <div id="head">
-      <h1>Communautés autour de la consultation pour une République Numérique</h1>
+      <a id="logo" target="_blank" href="http://www.RegardsCitoyens.org"><img src="style/regardscitoyens.png" alt="RegardsCitoyens.org" title="Regards Citoyens"/></a>
+      <h1>Communautés autour de la <a href="https://www.republique-numerique.fr/consultations/projet-de-loi-numerique/consultation/consultation" target="_blank">consultation pour une République Numérique</a></h1>
+      <h3>par <a href="http://RegardsCitoyens.org" target="_blank">Regards Citoyens</a> à l'occasion du hackathon <a href="http://hackyourphd.org/2015/11/hackrepnum-un-hackathon-recherche-autour-de-la-loi-sur-le-numerique-samedi-12-decembre-a-la-paillasse/" target="_blank">#HackRepNum</a></h3>
+      <p><small><a href="https://github.com/regardscitoyens/contributions-PJLNum" target="_blank">code-source</a> &mdash; <a href="https://www.data.gouv.fr/fr/datasets/consultation-sur-le-projet-de-loi-republique-numerique/" target="_blank">données source</a> &mdash; <a href="https://github.com/regardscitoyens/contributions-PJLNum/raw/master/data/2015-11-30_projet-de-loi-numerique_consultation.anon.csv" target="_blank">données retraitées</a></small></p>
       <p>Cliquez pour afficher l'un des deux graphes&nbsp;:
         <button id="contributions">Contributions</button>
         <button id="users">Utilisateurs</button>
         <br/>
-        <small>(Attention les fichiers font plusieurs Mo, le chargement peut être un peu long)</small>
+        <small>(Attention : les fichiers font plusieurs Mo, le chargement peut être un peu long)</small>
       </p>
     </div>
     <iframe></iframe>
+
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
   </body>
