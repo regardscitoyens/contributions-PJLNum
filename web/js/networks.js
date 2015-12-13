@@ -2,10 +2,9 @@
 
   ns.sigma = undefined;
 
-  ns.downloadGraph = function(filename){
+  ns.loadGraph = function(filename){
     var contrGraph = (filename.indexOf("users") === -1);
     console.log("Downloading data...");
-  setTimeout(function(){
     $.getJSON('data/'+filename).then(function(data){
       console.log("Building network...");
       if (ns.sigma) ns.sigma.kill();
@@ -47,7 +46,6 @@
       ns.sigma.refresh();
       $("#loader").hide();
     });
-  }, 100);
   };
 
   ns.setResponsive = function(){
@@ -56,5 +54,10 @@
   };
 
   $(window).resize(ns.setResponsive);
+
+  $(document).ready(function(){
+    ns.setResponsive();
+    ns.loadGraph($("#graph").hasClass('users') ? 'users_supporters.json' : 'propositions_covoted5+.json');
+  });
 
 })(window.networksPJLNum = window.networksPJLNum || {});

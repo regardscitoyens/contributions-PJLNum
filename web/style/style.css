@@ -1,7 +1,7 @@
-h1, #buttons, p{
-  text-align: center
+body{
+  text-align: center;
 }
-#iframe{
+iframe{
   width: 100%;
   border: 1px #EEE;
   margin: auto;
@@ -13,4 +13,5 @@ h1, #buttons, p{
 #graph{
   clear: both;
   width: 100%;
+  text-align: left;
 }

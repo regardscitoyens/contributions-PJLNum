@@ -8,19 +8,16 @@
   <body>
     <div id="head">
       <h1>Communautés autour de la consultation pour une République Numérique</h1>
-      <p>Choisir l'un des deux graphes :<br/><small>(Attention les fichiers font plusieurs Mo, le chargement est long)</small></p>
-      <div id="buttons">
-        <button onClick="$('#iframe').attr('src', 'contributions.html')">Contributions</button>
-        <button onClick="$('#iframe').attr('src', 'users.html')">Utilisateurs</button>
-      </div>
+      <p>Cliquez pour afficher l'un des deux graphes&nbsp;:
+        <button id="contributions">Contributions</button>
+        <button id="users">Utilisateurs</button>
+        <br/>
+        <small>(Attention les fichiers font plusieurs Mo, le chargement peut être un peu long)</small>
+      </p>
     </div>
-    <iframe id="iframe"></iframe>
-  <script src="js/jquery-1.11.2.min.js"></script>
-  <script type="text/javascript">
-$(document).ready(function(){
-  $('#iframe').height($(window).height() - $("#head").outerHeight() - 50);
-});
-  </script>
+    <iframe></iframe>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
   </body>
 </html>
 
