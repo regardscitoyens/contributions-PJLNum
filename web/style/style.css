@@ -17,6 +17,14 @@ iframe{
   margin: auto;
   text-align: center;
 }
+#desc{
+  display: none;
+  max-width: 750px;
+  margin: auto;
+  font-size: 0.9em;
+  text-align: justify;
+  padding-bottom: 20px;
+}
 #loader{
   text-align: center;
 }

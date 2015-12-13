@@ -87,7 +87,7 @@
       ns.sigma.refresh();
       ns.drawLegend();
       $("#loader").hide();
-      $('.sigma-tools').show();
+      $('.sigma-tools, #desc').show();
     });
   };
 
@@ -166,7 +166,7 @@
     .attr('id', 'node-info')
     .css({
       'display': 'inline-block',
-      'max-width': 350,
+      'width': (ns.contrGraph ? 350 : 200),
       'min-height': 30,
       'border-radius': 3,
       'padding': 5,
@@ -176,8 +176,8 @@
       'color': '#000',
       'box-shadow': '0 0 4px #666',
       'position': 'absolute',
-      'left': (node['cam0:x'] || node['renderer1:x']) - 175,
-      'top':  (node['cam0:y'] || node['renderer1:y']) + 15
+      'left': (node['cam0:x'] || node['renderer1:x']) - (ns.contrGraph ? 175 : 100),
+      'top':  (node['cam0:y'] || node['renderer1:y']) + 15 + $('#desc').outerHeight()
     });
     $('#graph').append(ns.popUp);
   }
@@ -210,7 +210,7 @@
 
   ns.setResponsive = function(){
     $('#graph').width($(window).width() - 50)
-               .height($(window).height() - 50);
+               .height($(window).height() - $('#desc').outerHeight() - 50);
   };
 
   $(window).resize(ns.setResponsive);
