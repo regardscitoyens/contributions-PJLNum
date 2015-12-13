@@ -150,7 +150,6 @@
   ns.showNodeInfo = function(event) {
     var node = event.data.node;
     ns.popUp && ns.popUp.remove();
-    console.log(node);
     ns.popUp = $('<div>').html(
       '<p>' + node.popup + '</p>' +
       (node.votes > 0 ? '<small>' + node.votes + " vote" + (node.votes > 1 ? 's' : '') + '</small><br/>' : '') +
