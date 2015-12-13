@@ -2,6 +2,37 @@
 
   ns.sigma = undefined;
 
+  ns.colors = {
+    "Citoyen": "rgb(255,235,102)",
+    "Institution": "rgb(5,225,255)",
+    "Organisation à but non lucratif": "rgb(137,255,107)",
+    "Organisation à but lucratif": "rgb(255,36,55)"
+  };
+
+  ns.drawLegend = function(filename){
+    ns.legend = new sigma({
+      container: 'legend',
+      settings: {
+        enableHovering: false,
+        mouseEnabled: false,
+        labelThreshold: 1
+      }
+    });
+    var y = 0
+    Object.keys(ns.colors).forEach(function(type){
+      ns.legend.graph.addNode({
+        id: type,
+        label: " " + type.replace(/(yen|tion)/, '$1s'),
+        x: 0,
+        y: y++,
+        size: 1,
+        color: ns.colors[type]
+      });
+    });
+    ns.legend.camera.ratio = 1.2;
+    ns.legend.refresh();
+  }
+
   ns.loadGraph = function(filename){
     var contrGraph = (filename.indexOf("users") === -1);
     console.log("Downloading data...");
@@ -31,7 +62,7 @@
           x: n.x*10,
           y: -n.y*10,
           size: Math.pow(n.size, 3),
-          color: n.color
+          color: ns.colors[n.attributes.type_source || n.attributes.type]
         });
       });
       data["edges"].forEach(function(e){
@@ -45,6 +76,7 @@
       console.log("Displaying graph...");
       ns.sigma.bind('clickNode', ns.clickNode).bind('clickStage', ns.unclickNode);
       ns.sigma.refresh();
+      ns.drawLegend();
       $("#loader").hide();
     });
   };
