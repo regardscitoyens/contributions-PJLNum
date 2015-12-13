@@ -121,7 +121,7 @@
     ns.sigma.graph.edges().forEach(function(e) {
       if ((e.source == node.id && toKeep[e.source]) ||
           (e.target == node.id && toKeep[e.target])) {
-        e.color = ns.shadeBlend(0.6, node.color);
+        e.color = ns.shadeBlend(0.6, toKeep[e.source == node.id ? e.target : e.source].color);
       } else e.hidden = true;
     });
     ns.sigma.refresh();
