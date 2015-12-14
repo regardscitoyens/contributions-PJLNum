@@ -85,12 +85,31 @@ iframe{
 .votes .against{
   background-color: #D22826;
 }
-#legend{
+#colors{
   text-align: left;
+  display: none;
+}
+#menuColors {
   position: absolute;
-  bottom: 50px;
+  bottom: 175px;
+  left: 10px;
+  width: 500px;
+  height: 50px;
+  z-index: 10;
+}
+#legendColors{
+  position: absolute;
   left: -200px;
   width: 500px;
-  height: 150px;
+  z-index: 10;
+}
+#menuSize {
+  display: none;
+  text-align: left;
+  position: absolute;
+  bottom: 60px;
+  right: 20px;
+  width: 125px;
+  height: 50px;
   z-index: 10;
 }

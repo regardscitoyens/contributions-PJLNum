@@ -28,7 +28,23 @@ Survolez le graphe pour plus d'infos sur les contributeurs et cliquez sur un nœ
         </div>
       </div>
     </div>
-    <div id="legend"></div>
+    <div id="colors">
+      <div id="menuColors">
+        <br/><span>Type de contributeurs (autodéclaré) :</span>
+      </div>
+      <div id="legendColors"></div>
+    </div>
+    <div id="menuSize">
+      <label for="size">La taille indique<br/>le nombre de</label><br/>
+      <select name="size">
+        <option value="contributions" selected="selected">contributions</option>
+        <option value="votes">votes</option>
+        <option value="pro">votes "pour"</option>
+        <option value="against">votes "contre"</option>
+        <option value="unsure">votes "mitigé"</option>
+      </select>
+    </div>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="js/sigma.min.js"></script>
     <script type="text/javascript" src="js/sigma.plugins.animate.min.js"></script>

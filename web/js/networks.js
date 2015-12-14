@@ -1,41 +1,79 @@
 (function(ns){
 
-  ns.sigma = undefined;
-
-  ns.colors = {
-    "Citoyen": "rgb(255,235,102)",
-    "Institution": "rgb(5,225,255)",
-    "Organisation à but non lucratif": "rgb(137,255,107)",
-    "Organisation à but lucratif": "rgb(255,36,55)"
+  ns.loadSettings = function(){
+    ns.type_col = $("#menuColors select").val() || 'type';
+    ns.type_size = $("#menuSize select").val() || 'size';
   };
 
-  ns.drawLegend = function(filename){
+  ns.updateSize = function(){
+    ns.loadSettings();
+    if (ns.sigma) sigma.plugins.animate(ns.sigma,
+      { size: ns.type_size },
+      { duration: 250 }
+    );
+  };
+
+  ns.colors = {
+    type: {
+      Citoyen: "rgb(255,235,102)",
+      Institution: "rgb(5,225,255)",
+      "Organisation à but non lucratif": "rgb(137,255,107)",
+      "Organisation à but lucratif": "rgb(255,36,55)"
+    },
+    proposition: {
+      Article: "rgb(185,165,228)",
+      Amendement: "rgb(45,238,186)"
+    },
+    community: {
+      
+    }
+  };
+
+  ns.updateColor = function(){
+    ns.loadSettings();
+    ns.drawLegend();
+    if (ns.sigma) sigma.plugins.animate(ns.sigma,
+      { color: 'color_' + ns.type_col },
+      { duration: 250 }
+    );
+  };
+
+  ns.legend = undefined;
+  ns.drawLegend = function(){
+    if (ns.legend) ns.legend.kill();
+    var keys = Object.keys(ns.colors[ns.type_col]),
+        n = keys.length,
+        y = 0;
+    $("#legendColors").css({
+      'height': 35*n + "px",
+      'bottom': 35*(5-n) + "px"
+    });
     ns.legend = new sigma({
-      container: 'legend',
+      container: 'legendColors',
       settings: {
         enableHovering: false,
         mouseEnabled: false,
         labelThreshold: 1
       }
     });
-    var y = 0
-    Object.keys(ns.colors).forEach(function(type){
+    keys.forEach(function(type){
       ns.legend.graph.addNode({
         id: type,
-        label: " " + type.replace(/(yen|tion)/, '$1s'),
+        label: " " + type.replace(/^(\S+)/, '$1s'),
         x: 0,
         y: y++,
         size: 1,
-        color: ns.colors[type]
+        color: ns.colors[ns.type_col][type]
       });
     });
-    ns.legend.camera.ratio = 1.2;
+    ns.legend.camera.ratio = 1.6 - 0.1*n;
     ns.legend.refresh();
   }
 
-  ns.contrGraph = false;
+  ns.sigma = undefined;
   ns.loadGraph = function(filename){
     ns.contrGraph = (filename.indexOf("users") === -1);
+    ns.loadSettings();
     console.log("Downloading data...");
     $.getJSON('data/'+filename).then(function(data){
       console.log("Building network...");
@@ -55,20 +93,22 @@
         }
       });
       data["nodes"].forEach(function(n){
+        var cat = n.attributes[ns.type_col] || n[ns.type_col];
         ns.sigma.graph.addNode({
           id: n.id,
           label: (ns.contrGraph ? n.attributes.authorName : n.label),
           popup: (ns.contrGraph ? n.label : (n.label || "Citoyen " + n.id)),
-          type: n.attributes.type,
+          contributions: n.attributes.total_contributions,
           votes: n.attributes.total_votes,
           pro: n.attributes.votes_pro,
           unsure: n.attributes.votes_unsure,
           against: n.attributes.votes_against,
-          contributions: n.attributes.total_contributions,
           x: n.x*10,
           y: -n.y*10,
-          size: Math.pow(n.size, 3),
-          color: ns.colors[n.attributes.type_source || n.attributes.type]
+          size: n.attributes[ns.contrGraph ? 'votes_pro' : 'total_contributions'],
+          color_type: ns.colors['type'][n.attributes.type],
+          color_proposition: ns.colors['proposition'][n.attributes.proposition],
+          color: ns.colors[ns.type_col][n.attributes[ns.type_col] || n[ns.type_col]]
         });
       });
       data["edges"].forEach(function(e){
@@ -81,13 +121,16 @@
       console.log("Displaying graph...");
       ns.sigma.bind('clickNode', ns.clickNode).bind('clickStage', ns.unclickNode);
       ns.sigma.bind('overNode', ns.showNodeInfo).bind('outNode', ns.hideNodeInfo);
+      $("#menuColors select").on('change', ns.updateColor);
+      $("#menuSize select").on('change', ns.updateSize);
       $('#zoom').click(ns.zoom);
       $('#unzoom').click(ns.unzoom);
       $('#recenter').click(ns.recenter);
       ns.sigma.refresh();
-      ns.drawLegend();
       $("#loader").hide();
-      $('.sigma-tools, #desc').show();
+      console.log("Drawing legend...");
+      $('.sigma-tools, #desc, #colors, #menuSize').show();
+      ns.drawLegend();
     });
   };
 
@@ -154,13 +197,11 @@
       '<p>' + node.popup + '</p>' +
       (node.votes > 0 ? '<small>' + node.votes + " vote" + (node.votes > 1 ? 's' : '') + '</small><br/>' : '') +
       (node.contributions > 0 ? '<small>' + node.contributions + " contribution" + (node.contributions > 1 ? 's' : '') + '</small><br/>' : '') +
-      (ns.contrGraph ?
-       '<div class="votes">' +
-          ns.histoVote('pro', node) +
-          ns.histoVote('unsure', node) +
-          ns.histoVote('against', node) +
-        '</div>'
-        : '')
+     '<div class="votes">' +
+        ns.histoVote('pro', node) +
+        ns.histoVote('unsure', node) +
+        ns.histoVote('against', node) +
+      '</div>'
     )
     .attr('id', 'node-info')
     .css({
