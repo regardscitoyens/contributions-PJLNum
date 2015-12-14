@@ -103,6 +103,7 @@
           pro: n.attributes.votes_pro,
           unsure: n.attributes.votes_unsure,
           against: n.attributes.votes_against,
+          score: (3*n.attributes.votes_pro - 2*n.attributes.votes_against - n.attributes.votes_unsure) / Math.sqrt(n.attributes.total_votes),
           x: n.x*10,
           y: -n.y*10,
           size: n.attributes[ns.contrGraph ? 'votes_pro' : 'total_contributions'],
