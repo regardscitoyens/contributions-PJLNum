@@ -43,7 +43,7 @@
       "Jeux vidéos": "rgb(255,215,83)",
       "Propriété intellectuelle": "rgb(255,0,0)",
       "Dons SMS": "rgb(155,40,155)",
-      Electrosensibilité: "rgb(255,128,0)",
+      Electrosensibilité: "rgb(45,20,45)",
       Divers: "rgb(128,128,128)"
     }
   };
