@@ -52,7 +52,7 @@ iframe{
 .sigma-tools {
   display: none;
   position: absolute;
-  top: 12px;
+  top: 72px;
   right: 12px;
   border: 1px solid #d2d2d2;
   background-color: #FFF;
@@ -85,31 +85,30 @@ iframe{
 .votes .against{
   background-color: #D22826;
 }
-#colors{
+#legend{
   text-align: left;
   display: none;
 }
+#menuSize {
+  position: absolute;
+  top: 120px;
+  left: 40px;
+  width: 250px;
+  height: 30px;
+  z-index: 10;
+}
 #menuColors {
   position: absolute;
-  bottom: 175px;
-  left: 10px;
-  width: 500px;
+  top: 170px;
+  left: 40px;
+  width: 250px;
   height: 50px;
   z-index: 10;
 }
 #legendColors{
   position: absolute;
-  left: -200px;
+  left: -180px;
+  top: 220px;
   width: 500px;
-  z-index: 10;
-}
-#menuSize {
-  display: none;
-  text-align: left;
-  position: absolute;
-  bottom: 60px;
-  right: 40px;
-  width: 125px;
-  height: 50px;
   z-index: 10;
 }

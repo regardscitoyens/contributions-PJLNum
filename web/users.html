@@ -27,21 +27,25 @@ Survolez le graphe pour plus d'infos sur les contributeurs et cliquez sur un nœ
         </div>
       </div>
     </div>
-    <div id="colors">
+    <div id="legend">
+      <div id="menuSize">
+        <label for="size">La taille indique<br/>le nombre de</label>
+        <select name="size">
+          <option value="contributions" selected="selected">contributions</option>
+          <option value="votes">votes</option>
+          <option value="pro">votes "pour"</option>
+          <option value="against">votes "contre"</option>
+          <option value="unsure">votes "mitigé"</option>
+        </select>
+      </div>
       <div id="menuColors">
-        <br/><span>Type de contributeurs (autodéclaré)&nbsp;:</span>
+        <label for="color">Catégoriser les contributeurs par</label><br/>
+        <select name="color">
+          <option value="type" selected="selected">type (autodéclaré)</option>
+          <option value="community_users">communauté (calculé)</option>
+        </select>
       </div>
       <div id="legendColors"></div>
-    </div>
-    <div id="menuSize">
-      <label for="size">La taille indique<br/>le nombre de</label><br/>
-      <select name="size">
-        <option value="contributions" selected="selected">contributions</option>
-        <option value="votes">votes</option>
-        <option value="pro">votes "pour"</option>
-        <option value="against">votes "contre"</option>
-        <option value="unsure">votes "mitigé"</option>
-      </select>
     </div>
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>

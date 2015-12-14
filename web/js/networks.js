@@ -15,7 +15,7 @@
 
   ns.colors = {
     type: {
-      Citoyen: "rgb(255,235,102)",
+      Citoyen: "rgb(255,215,83)",
       Institution: "rgb(5,225,255)",
       "Organisation à but non lucratif": "rgb(137,255,107)",
       "Organisation à but lucratif": "rgb(255,36,55)"
@@ -24,8 +24,27 @@
       Article: "rgb(185,165,228)",
       Amendement: "rgb(45,238,186)"
     },
-    community: {
-      
+    community_contr: {
+      Citoyen: "rgb(255,215,83)",
+      Institutionnel: "rgb(5,225,255)",
+      Recherche: "rgb(255,128,0)",
+      Associatif: "rgb(87,255,57)",
+      Accessibilité: "rgb(250,147,231)",
+      Archives: "rgb(136,62,247)",
+      "Propriété intellectuelle": "rgb(255,0,0)",
+      Divers: "rgb(128,128,128)"
+    },
+    community_users: {
+      "Citoyens & Gouvernement": "rgb(5,225,255)",
+      "OpenData & OpenAccess": "rgb(255,128,0)",
+      "Neutralité du Net": "rgb(136,62,247)",
+      "Logiciels libres": "rgb(87,255,57)",
+      Accessibilité: "rgb(250,147,231)",
+      "Jeux vidéos": "rgb(255,215,83)",
+      "Propriété intellectuelle": "rgb(255,0,0)",
+      "Dons SMS": "rgb(155,40,155)",
+      Electrosensibilité: "rgb(255,128,0)",
+      Divers: "rgb(128,128,128)"
     }
   };
 
@@ -46,7 +65,6 @@
         y = 0;
     $("#legendColors").css({
       'height': 35*n + "px",
-      'bottom': 35*(5-n) + "px"
     });
     ns.legend = new sigma({
       container: 'legendColors',
@@ -59,14 +77,14 @@
     keys.forEach(function(type){
       ns.legend.graph.addNode({
         id: type,
-        label: " " + type.replace(/^(\S+)/, '$1s'),
+        label: " " + (ns.type_col.indexOf("community_") !== 0 ? type.replace(/^(\S+)/, '$1s') : type),
         x: 0,
         y: y++,
         size: 1,
         color: ns.colors[ns.type_col][type]
       });
     });
-    ns.legend.camera.ratio = 1.6 - 0.1*n;
+    ns.legend.camera.ratio = 1.2;
     ns.legend.refresh();
   }
 
@@ -108,6 +126,8 @@
           y: -n.y*10,
           size: n.attributes[ns.contrGraph ? 'votes_pro' : 'total_contributions'],
           color_type: ns.colors['type'][n.attributes.type],
+          color_community_users: ns.colors['community_users'][n.community],
+          color_community_contr: ns.colors['community_contr'][n.community],
           color_proposition: ns.colors['proposition'][n.attributes.proposition],
           color: ns.colors[ns.type_col][n.attributes[ns.type_col] || n[ns.type_col]]
         });
@@ -130,7 +150,7 @@
       ns.sigma.refresh();
       $("#loader").hide();
       console.log("Drawing legend...");
-      $('.sigma-tools, #desc, #colors, #menuSize').show();
+      $('.sigma-tools, #desc, #legend').show();
       ns.drawLegend();
     });
   };

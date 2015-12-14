@@ -26,27 +26,27 @@ Survolez le graphe pour plus d'infos sur une contribution et connaître l'équil
         </div>
       </div>
     </div>
-    <div id="colors">
-      <div id="menuColors">
+    <div id="legend">
+      <div id="menuSize">
+        <label for="size"><br/>La taille indique</label>
+        <select name="size">
+          <option value="pro" selected="selected">les votes "pour"</option>
+          <option value="against">les votes "contre"</option>
+          <option value="unsure">les votes "mitigé"</option>
+          <option value="votes">le total de votes</option>
+          <option value="score">le "succès"</option>
+        </select>
+      </div>
+       <div id="menuColors">
         <label for="color">Catégoriser les contributions par</label><br/>
         <select name="color">
           <option value="type" selected="selected">type d'auteur (autodéclaré)</option>
           <option value="proposition">type de proposition</option>
-        <!--<option value="community">communauté</option>-->
+          <option value="community_contr">communauté (calculé)</option>
         </select>
       </div>
       <div id="legendColors"></div>
-    </div>
-    <div id="menuSize">
-      <label for="size"><br/>La taille indique</label><br/>
-      <select name="size">
-        <option value="pro" selected="selected">les votes "pour"</option>
-        <option value="against">les votes "contre"</option>
-        <option value="unsure">les votes "mitigé"</option>
-        <option value="votes">le total de votes</option>
-        <option value="score">le "succès"</option>
-      </select>
-    </div>
+   </div>
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="js/sigma.min.js"></script>
     <script type="text/javascript" src="js/sigma.plugins.animate.min.js"></script>
