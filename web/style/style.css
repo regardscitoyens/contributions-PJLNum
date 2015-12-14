@@ -35,11 +35,11 @@ iframe{
 }
 #desc{
   display: none;
-  max-width: 750px;
+  max-width: 900px;
   margin: auto;
-  font-size: 0.9em;
+  font-size: 0.85em;
   text-align: justify;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 }
 #loader{
   text-align: center;

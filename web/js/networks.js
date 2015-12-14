@@ -195,8 +195,9 @@
     ns.popUp && ns.popUp.remove();
     ns.popUp = $('<div>').html(
       '<p>' + node.popup + '</p>' +
-      (node.votes > 0 ? '<small>' + node.votes + " vote" + (node.votes > 1 ? 's' : '') + '</small><br/>' : '') +
-      (node.contributions > 0 ? '<small>' + node.contributions + " contribution" + (node.contributions > 1 ? 's' : '') + '</small><br/>' : '') +
+      '<small>' + node.votes + " vote" + (node.votes > 1 ? 's' : '') +
+      (ns.contrGraph ? '' : ' &mdash; ' + node.contributions + " contribution" + (node.contributions > 1 ? 's' : '')) +
+     '</small><br/>' +
      '<div class="votes">' +
         ns.histoVote('pro', node) +
         ns.histoVote('unsure', node) +
@@ -206,7 +207,7 @@
     .attr('id', 'node-info')
     .css({
       'display': 'inline-block',
-      'width': (ns.contrGraph ? 350 : 200),
+      'width': 350,
       'min-height': 30,
       'border-radius': 3,
       'padding': 5,
