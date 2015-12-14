@@ -81,11 +81,11 @@
       ns.sigma = new sigma({
         container: 'graph',
         settings: {
-          labelThreshold: (ns.contrGraph ? 6 : 4),
+          labelThreshold: (ns.contrGraph ? 6 : 5),
           enableHovering: ns.contrGraph,
           singleHover: true,
-          minNodeSize: (ns.contrGraph ? 3 : 1),
-          maxNodeSize: (ns.contrGraph ? 8 : 10),
+          minNodeSize: (ns.contrGraph ? 2 : 1),
+          maxNodeSize: 8,
           edgeColor: "default",
           borderSize: 1,
           defaultEdgeColor: "#F8F8F8",
