@@ -150,8 +150,9 @@
       ns.sigma.refresh();
       $("#loader").hide();
       console.log("Drawing legend...");
-      $('.sigma-tools, #desc, #legend').show();
+      $('.sigma-tools, #desc p, #legend').show();
       ns.drawLegend();
+      ns.setResponsive();
     });
   };
 
@@ -239,7 +240,7 @@
       'box-shadow': '0 0 4px #666',
       'position': 'absolute',
       'left': (node['cam0:x'] || node['renderer1:x']) - (ns.contrGraph ? 175 : 100),
-      'top':  (node['cam0:y'] || node['renderer1:y']) + 15 + $('#desc').outerHeight()
+      'top':  (node['cam0:y'] || node['renderer1:y']) + 15
     });
     $('#graph').append(ns.popUp);
   }
@@ -271,8 +272,8 @@
   };
 
   ns.setResponsive = function(){
-    $('#graph').width($(window).width() - 50)
-               .height($(window).height() - $('#desc').outerHeight() - 50);
+    $('#graph').width($(window).width() - $("#desc").outerHeight() - 10)
+      .height($(window).height() - 5);
   };
 
   $(window).resize(ns.setResponsive);

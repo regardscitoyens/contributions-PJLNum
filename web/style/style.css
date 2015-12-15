@@ -34,26 +34,31 @@ iframe{
   text-align: center;
 }
 #desc{
+  width: 200px;
+  float: right;
+  padding: 12px;
+  text-align: left;
+}
+#desc p{
   display: none;
-  max-width: 900px;
-  margin: auto;
   font-size: 0.85em;
-  text-align: justify;
-  padding-bottom: 15px;
+  margin: 5px;
 }
 #loader{
   text-align: center;
 }
+#sigma-parent{
+  float: left;
+}
 #graph{
   clear: both;
-  width: 100%;
   text-align: left;
 }
 .sigma-tools {
   display: none;
   position: absolute;
-  top: 72px;
-  right: 12px;
+  top: 12px;
+  right: 212px;
   border: 1px solid #d2d2d2;
   background-color: #FFF;
   -webkit-box-shadow: 0px 1px 5px rgba(50, 20, 0, 0.20);
@@ -91,7 +96,7 @@ iframe{
 }
 #menuSize {
   position: absolute;
-  top: 120px;
+  top: 20px;
   left: 40px;
   width: 250px;
   height: 30px;
@@ -99,7 +104,7 @@ iframe{
 }
 #menuColors {
   position: absolute;
-  top: 170px;
+  top: 70px;
   left: 40px;
   width: 250px;
   height: 50px;
@@ -108,7 +113,7 @@ iframe{
 #legendColors{
   position: absolute;
   left: -180px;
-  top: 220px;
+  top: 120px;
   width: 500px;
   z-index: 10;
 }
