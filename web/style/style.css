@@ -1,5 +1,6 @@
 body{
   text-align: center;
+  overflow: hidden;
 }
 #head{
   background-color: #EEE;
@@ -34,10 +35,12 @@ iframe{
   text-align: center;
 }
 #desc{
-  width: 200px;
-  float: right;
-  padding: 12px;
+  position: absolute;
+  right: 0;
+  width: 170px;
+  padding: 10px;
   text-align: left;
+  z-index: 10;
 }
 #desc p{
   display: none;
@@ -48,7 +51,7 @@ iframe{
   text-align: center;
 }
 #sigma-parent{
-  float: left;
+  position: absolute;
 }
 #graph{
   clear: both;
@@ -57,8 +60,8 @@ iframe{
 .sigma-tools {
   display: none;
   position: absolute;
-  top: 12px;
-  right: 212px;
+  top: 18px;
+  right: 162px;
   border: 1px solid #d2d2d2;
   background-color: #FFF;
   -webkit-box-shadow: 0px 1px 5px rgba(50, 20, 0, 0.20);

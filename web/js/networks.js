@@ -272,7 +272,7 @@
   };
 
   ns.setResponsive = function(){
-    $('#graph').width($(window).width() - $("#desc").outerHeight() - 10)
+    $('#graph').width($(window).width() - 10)
       .height($(window).height() - 5);
   };
 
